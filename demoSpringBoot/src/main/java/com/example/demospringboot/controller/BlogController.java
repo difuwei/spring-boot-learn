@@ -5,11 +5,8 @@ import com.example.demospringboot.service.Impl.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import javax.annotation.Resource;
-import javax.xml.transform.Source;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.BlockingQueue;
 
 @RestController
 @RequestMapping("/blog")
@@ -22,7 +19,6 @@ public class BlogController {
     public Blog getBlog(@PathVariable String id){
 //        return Integer.parseInt(id);
         Blog blog = blogService.selectBlog(Integer.parseInt(id));
-
         return blog;
     }
     @RequestMapping("/addBlog")

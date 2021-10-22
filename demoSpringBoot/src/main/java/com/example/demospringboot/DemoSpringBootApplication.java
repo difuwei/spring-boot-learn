@@ -12,7 +12,7 @@ import java.util.List;
 @SpringBootApplication
 // 开启定时任务
 @EnableScheduling
-@MapperScan(value = "com.example.dempspringboot.util.mapper")
+@MapperScan(value = "com.example.demospringboot.util.mapper")
 public class DemoSpringBootApplication {
     public static void main(String[] args) {
 //        Long time = System.currentTimeMillis();
