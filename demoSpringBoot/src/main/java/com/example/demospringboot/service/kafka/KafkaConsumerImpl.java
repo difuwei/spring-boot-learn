@@ -35,10 +35,15 @@ public class KafkaConsumerImpl{
 //            System.out.println("receive-msg-list:"+kafkaConsumerList);
             log.info("receive ------------------ message =" + message);
             //解析map格式
-            JSONObject kafkaConsumerMap = JSONObject.parseObject(message);
-            System.out.println("receive-msg-json:"+kafkaConsumerMap);
-            KafkaConsumer kafkaConsumer = JSON.parseObject(JSON.toJSONString(kafkaConsumerMap.get("1")), KafkaConsumer.class);
-            System.out.println("kafkaConsumer-id:"+kafkaConsumer.getId());
+            try {
+                JSONObject kafkaConsumerMap = JSONObject.parseObject(message);
+                System.out.println("receive-msg-json:" + kafkaConsumerMap);
+                KafkaConsumer kafkaConsumer = JSON.parseObject(JSON.toJSONString(kafkaConsumerMap.get("1")), KafkaConsumer.class);
+                System.out.println("kafkaConsumer-id:" + kafkaConsumer.getId());
+                System.out.println("kafkaConsumer-address:" + kafkaConsumer.getAddress());
+            }catch (Exception e){
+                //消息非json字符串格式
+            }
 //            MessageModel messageModel = null;
 //            try {
 //                messageModel = gson.fromJson(message.toString(), MessageModel.class);

@@ -7,10 +7,15 @@ import org.apache.kafka.clients.producer.ProducerRecord;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
+import org.springframework.kafka.support.SendResult;
+import org.springframework.util.concurrent.FailureCallback;
+import org.springframework.util.concurrent.ListenableFuture;
+import org.springframework.util.concurrent.SuccessCallback;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.*;
+import java.util.concurrent.Future;
 
 @RestController
 @RequestMapping("kafka")
@@ -19,6 +24,7 @@ public class KafkaController {
     private DemoKafkaProducer demoKafkaProducer;
     @Value("${spring.kafka.template.default-topic}")
     private String sendTopic;
+
     @RequestMapping("produceMsg")
     public String produceMsg(){
         Properties properties =new Properties();

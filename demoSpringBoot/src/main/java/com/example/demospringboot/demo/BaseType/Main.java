@@ -1,8 +1,8 @@
 package com.example.demospringboot.demo.BaseType;
 
+import com.alibaba.fastjson.JSON;
 import org.springframework.boot.configurationprocessor.json.JSONException;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
-import org.springframework.boot.configurationprocessor.json.JSONTokener;
 
 import java.io.File;
 import java.io.IOException;
@@ -35,10 +35,25 @@ public class Main {
         } catch (JSONException e) {
 
         }
+
         HashMap<String, Integer> hashMap = new HashMap<>();
         hashMap.put("b", 3);
         hashMap.put("c", 5);
-        System.out.println(hashMap);
+        System.out.println("map打印"+hashMap);
+        JSONObject jsonObject1 = new JSONObject();
+        try{
+            jsonObject1.put("id","22");
+            jsonObject1.put("id","22");
+        }catch (Exception e){
+        }
+        System.out.println("josnobject打印"+jsonObject1);
+        String jsonFromMap = JSON.toJSONString(hashMap);
+        System.out.println("map转json:"+ jsonFromMap);
+        Map<String, String> mapFromJson = (Map<String, String>) com.alibaba.fastjson.JSON.parseObject(jsonFromMap,Map.class);
+        System.out.println("json转map:"+ mapFromJson);
+        com.alibaba.fastjson.JSONObject jsonObject2 = JSON.parseObject(jsonFromMap);
+        System.out.println("json转jsonobject:"+jsonObject2);
+
 //        遍历
         for (Map.Entry<String, Integer> entry:hashMap.entrySet()){
             System.out.println(entry.getKey());
